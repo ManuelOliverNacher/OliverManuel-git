@@ -33,25 +33,27 @@ function CartContextProvider(props) {
       cart.forEach((e) => (total += e.quantity * e.price));
       return total;
     };
-
     const addItem = (item, quantity) => {
-      const existingItemIndex = cart.findIndex((product) => product.id === item.id);
-      if (existingItemIndex > -1) {
-        const updatedCart = [...cart];
-        updatedCart[existingItemIndex] = {
-          ...updatedCart[existingItemIndex],
-          quantity: updatedCart[existingItemIndex].quantity + 1
-        };
-        setCart(updatedCart);
+      const existingItemIndex = cart.find((product) => product.id === item.id);
+      if (existingItemIndex) {
+        const carritoActualizado = cart.map((prod) => {
+          if (prod.id === item.id) {
+            return { ...prod, quantity: prod.quantity + quantity }
+          } else {
+            return prod
+          }
+        })
+        setCart(carritoActualizado)
       } else {
         const newItem = {
           ...item,
-          id: new Date().getTime(),
           quantity
         }
         setCart([...cart, newItem]);
       }
     };
+  
+  
     
   const clearCart = () => {
     setCart([]);

@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 function CartContainer() {
   const { cart, clearCart,removeProduct } = useContext(cartContext);
   const [totalPrice, setTotalPrice] = useState(0);
+  console.log(cart)
 
   useEffect(() => {
     let total = 0;
@@ -31,7 +32,7 @@ function CartContainer() {
       <h5 className="name text-white">{produ.title}</h5>
       <h5 className="count text-white">Cantidad: {produ.quantity}</h5>
       <h5 className="price text-white">
-        ${produ.price }
+        ${produ.price * produ.quantity}
       </h5>       
     </div>
   );
