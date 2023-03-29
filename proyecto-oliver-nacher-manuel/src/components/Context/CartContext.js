@@ -34,7 +34,7 @@ function CartContextProvider(props) {
       return total;
     };
 
-    const addItem = (item) => {
+    const addItem = (item, quantity) => {
       const existingItemIndex = cart.findIndex((product) => product.id === item.id);
       if (existingItemIndex > -1) {
         const updatedCart = [...cart];
@@ -47,9 +47,7 @@ function CartContextProvider(props) {
         const newItem = {
           ...item,
           id: new Date().getTime(),
-          img: item.img,
-          title: item.title,
-          price: item.price
+          quantity
         }
         setCart([...cart, newItem]);
       }

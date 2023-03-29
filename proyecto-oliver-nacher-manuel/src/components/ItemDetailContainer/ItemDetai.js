@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import ItemCount from '../ItemCount/ItemCount';
 import cartContext from "../Context/CartContext";
 import { useContext } from 'react';
-import Swal from 'sweetalert2';
 import {  collection, doc, getDoc } from "firebase/firestore";
 
 const ItemDetail = ({ idProd, db }) => {
@@ -29,11 +28,11 @@ const ItemDetail = ({ idProd, db }) => {
     fetchProduct();
   }, [idProd, db]);
 
+  console.log(prod)
+
   const onAddToCart = (quantity) => {
-    addItem( idProd, quantity)
-    console.log(addItem)
-    console.log(quantity)
-    console.log(idProd)
+    addItem( prod, quantity)
+    
 }
   
   
