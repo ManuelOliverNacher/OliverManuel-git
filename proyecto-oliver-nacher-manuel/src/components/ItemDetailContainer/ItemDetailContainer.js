@@ -1,16 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
 import { getFirestore, collection, doc, getDoc } from "firebase/firestore";
-
-
 import ItemDetail from "./ItemDetai";
-
-//Configuracion de firebase------------------------------------------------------
 import { initializeApp } from "firebase/app";
 
-
-
+//Configuracion de firebase-----------------------------------------------------
 const firebaseConfig = {
   apiKey: "AIzaSyC0lEeptOp6_WbNxb9421ewV1oypwlNbPU",
   authDomain: "olivernachermanuel-proyecto.firebaseapp.com",
@@ -24,6 +18,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 //Configuracion de firebase------------------------------------------------------
+
 
 function ItemDetailContainer() {
   const [prod, setProd] = useState({});

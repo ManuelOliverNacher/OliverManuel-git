@@ -3,6 +3,7 @@ import ItemCount from '../ItemCount/ItemCount';
 import cartContext from "../Context/CartContext";
 import { useContext } from 'react';
 import {  collection, doc, getDoc } from "firebase/firestore";
+import Swal from 'sweetalert2';
 
 const ItemDetail = ({ idProd, db }) => {
   const [prod, setProd] = useState({});
@@ -31,10 +32,15 @@ const ItemDetail = ({ idProd, db }) => {
   console.log(prod)
 
   const onAddToCart = (quantity) => {
-    addItem( prod, quantity)
+    Swal.fire({
+      title: 'Producto Agregado!',
+      text: `Agregaste ${quantity} productos al carrito`,
+      icon: 'success',
+      customClass: 'swal-custom-background',
     
-}
-  
+    });
+    addItem({...prod, id: idProd}, quantity);
+  }
   
   return (
     <div className="card card-detalle">

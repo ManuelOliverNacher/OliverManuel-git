@@ -1,5 +1,11 @@
-//Configuracion de firebase------------------------------------------------------
+import { getFirestore, collection, doc, getDoc } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
+
+
+
+
+//Configuracion de firebase------------------------------------------------------
+
 
 
 
@@ -16,5 +22,3 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 //Configuracion de firebase------------------------------------------------------
-
-export default firebaseConfig

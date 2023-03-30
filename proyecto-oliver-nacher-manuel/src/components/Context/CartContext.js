@@ -26,6 +26,16 @@ function CartContextProvider(props) {
       });
       return count;
     };
+    function calculateTotalPrice(cart) {
+      let totalPrice = 0;
+      for (let i = 0; i < cart.length; i++) {
+        const item = cart[i];
+        if (item && item.price && !isNaN(parseFloat(item.price))) {
+          totalPrice += parseFloat(item.price) * item.quantity;
+        }
+      }
+      return totalPrice;
+    }
     
     
     const getTotal = () => {

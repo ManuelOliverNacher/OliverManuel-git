@@ -23,3 +23,18 @@ h5, h5 {
 
 
     }
+
+    .delete-button {
+        padding: 1px;
+        background-color: #fff;
+        border: 1px solid #ff0000;
+        border-radius: 4px;
+        cursor: pointer;
+        border: none;
+      }
+      
+      .trash-icon {
+        color: #ac2c2c;
+        font-size: 20px;
+        margin-top: -25px;
+      }

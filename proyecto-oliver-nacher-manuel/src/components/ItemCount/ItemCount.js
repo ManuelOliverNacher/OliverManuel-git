@@ -4,7 +4,7 @@ import Button from "../Button/button";
 import './itemCount.css'
 import { useContext } from 'react';
 import CartContext from "../Context/CartContext";
-
+import Swal from "sweetalert2";
 const ItemCount = ({initial, stock, onAddToCart}) => {
   const [count, setCount] = useState(initial);
   
