@@ -4,7 +4,8 @@ import './cartContainer.css';
 import Button from '../Button/button';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { FaTrash } from 'react-icons/fa';
-import CheckoutCart from '../ItemDetailContainer/CheckoutCart';
+import { Link } from 'react-router-dom';
+
 
 function CartContainer() {
   const { cart, clearCart, removeProduct } = useContext(cartContext);
@@ -65,9 +66,7 @@ function CartContainer() {
             </h4>
 
             <div className="d-flex justify-content-center mt-4">
-            <Button
-  className="btn-buy"
-  onClick={({}) => {
+  <Link to="/checkout" className="btn-buy" onClick={() => {
     Swal.fire({
       title: "Estas seguro de confirmar la compra?",
       text: "La compra se realizara!",
@@ -86,12 +85,11 @@ function CartContainer() {
         window.location.reload();
       }
     });
-  }}
->
-  Finalizar Compra
-</Button>
+  }}>
+    Terminar compra
+  </Link>
+</div>
 
-            </div>
           </div>
         </>
       )}

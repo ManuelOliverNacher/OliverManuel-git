@@ -1,11 +1,28 @@
 import { useContext, useState } from "react";
-import {CartContext} from "../Context"
+import cartContext from "../Context/CartContext";
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "./firebase";
+import { getFirestore } from "firebase/firestore";
+import "./ItemDetail.css" 
+import { initializeApp } from "firebase/app";
+
+//Configuracion de firebase-----------------------------------------------------
+const firebaseConfig = {
+  apiKey: "AIzaSyC0lEeptOp6_WbNxb9421ewV1oypwlNbPU",
+  authDomain: "olivernachermanuel-proyecto.firebaseapp.com",
+  projectId: "olivernachermanuel-proyecto",
+  storageBucket: "olivernachermanuel-proyecto.appspot.com",
+  messagingSenderId: "721612872490",
+  appId: "1:721612872490:web:de05500ee31ae065e21c53",
+  measurementId: "G-CTY1J091SS"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+//Configuracion de firebase------------------------------------------------------
 
 function CheckoutCart() {
   const [buyerInfo, setBuyerInfo] = useState({});
-  const { cart, total } = useContext(CartContext);
+  const { cart, total } = useContext(cartContext);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -26,21 +43,28 @@ function CheckoutCart() {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <label>
-        Nombre:
-        <input type="text" name="nonmbre:" onChange={handleInputChange} />
-      </label>
-      <label>
-        Email:
-        <input type="email" name="email" onChange={handleInputChange} />
-      </label>
-      <label>
-        Telefono:
-        <input type="number" name="Numero" onChange={handleInputChange} />
-      </label>
-      <button type="submit">Enviar</button>
-    </form>
+    <div className="container">
+    <div className="row justify-content-center">
+      <div className="col-lg-8">
+        <h3 className="text-center mb-4">Orden de Compra</h3>
+        <form className="Form" onSubmit={handleFormSubmit}>
+          <div className="form-group">
+            <label htmlFor="nombre">Nombre:</label>
+            <input type="text" className="form-control" id="nombre" name="nombre" onChange={handleInputChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Email:</label>
+            <input type="email" className="form-control" id="email" name="email" onChange={handleInputChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="telefono">Teléfono:</label>
+            <input type="text" className="form-control" id="telefono" name="telefono" onChange={handleInputChange} />
+          </div>
+          <button className="btn btn-primary btn-block mt-4" type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
   );
 }
 
